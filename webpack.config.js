@@ -1,5 +1,7 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/client/index.js",
@@ -8,6 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, "build"),
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
@@ -37,7 +40,7 @@ module.exports = {
     port: 3000,
     open: true,
     proxy: {
-      "/api": "http://localhost:8080",
+      "/api": "https://localhost:8080",
     },
   },
 };
